@@ -37,6 +37,27 @@ ldmx python3 ana_example_1.py
 ldmx python3 ana_example_2.py data/ngun_870mm_0.10_gev.root data/ngun_870mm_0.80_gev.root --output example_2
 ```
 
+### Accessing Hcal ID information
+
+To access Hcal ID information you need a particular configuration of ldmx-sw
+```
+cd ldmx-sw/
+git switch iss1048-detectorID-bindings
+git submodule update
+ldmx use dev iss41-boost-python
+mkdir build; cd build;
+ldmx cmake .. -DBUILD_DETECTORID_BINDINGS=ON
+ldmx make install -j2
+```
+
+Then you can run
+```
+ldmx python3
+import libDetDescr
+```
+
+If this works, look at `get_hcalids.py` as an example to get the layer and strip numbering of an HcalHit.
+
 ## Plotting
 
 In `plot/` you will find tools to plot the arrays saved in the pickle files.
@@ -53,7 +74,8 @@ An example is provided in `plot_example.py`.
 How to run:
 ```
 cd plot/
-# first example ../data/example_1.pkl
-# second example from ../data/example_2.pkl
+# first example ../output/example_1.pkl
 python3 plot_example_1.py
+# second example from ../output/example_2.pkl
+python3 plot_example_2.py ../output/example_2.pkl 
 ```

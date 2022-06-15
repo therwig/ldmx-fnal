@@ -17,9 +17,7 @@ for ie,event in enumerate(tree):
     for hit in event.HcalRecHits:
         hit_id = hit.getID()
         hit_hcalid = DD.HcalID(hit_id)
-        print(hit_id)
-        raw_id = hit.raw()
-        section = hit.section() 
-        layer = hit.layer()
-        strip = hit.strip()
-
+        raw_id = hit_hcalid.raw()
+        section = hit_hcalid.section() 
+        layer = hit_hcalid.layer()
+        strip = hit_hcalid.strip()
