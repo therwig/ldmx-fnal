@@ -15,6 +15,10 @@ source ldmx-sw/scripts/ldmx-env.sh
 ```
 ldmx
 ```
+- Then install github repo in a similar path:
+```
+git clone git@github.com:cmantill/ldmx-fnal.git
+```
 
 ## Tutorial
 
