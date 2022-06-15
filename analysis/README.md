@@ -3,22 +3,30 @@
 Use `EventTree.py` to analyze LDMX Events.
 
 ## Getting started
-- Install https://docs.docker.com/engine/install/
-- Clone repo:
+- [Install the docker engine](https://docs.docker.com/engine/install/)
+- (on Linux systems) [Manage docker as non-root user](https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user)
+- Clone the repo: `git clone --recursive git@github.com:LDMX-Software/ldmx-sw.git`
+  - **Note**: You need to [setup an SSH-key with your GitHub account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh) on the computer you are using.
+- Setup the environment (in bash): 
 ```
-git clone --recursive git@github.com:LDMX-Software/ldmx-sw.git
+source ldmx-sw/scripts/ldmx-env.sh
 ```
-* Note: You need to setup an SSH-key with your GitHub account on the computer you are using.
-- Setup the environment (in bash): source ldmx-sw/scripts/ldmx-env.sh
 - Check that `ldmx` can run:
 ```
 ldmx
+```
+- Then install github repo in a similar path:
+```
+git clone git@github.com:cmantill/ldmx-fnal.git
 ```
 
 ## Tutorial
 
 Two example are provided in `ana_example*.py`.
 - Example data is placed in `data/`
+  Copy data from https://www.dropbox.com/sh/jbw6iai2wez95fp/AABnIy7nUf1_IBbYuNNCuqGda?dl=0
+  into the `data/` directory.
+
 - Output arrays will be saved with pickle (in .pkl format) and stored in `output/`
 
 How to run:
