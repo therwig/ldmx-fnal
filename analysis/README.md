@@ -19,6 +19,9 @@ ldmx
 
 Two example are provided in `ana_example*.py`.
 - Example data is placed in `data/`
+  Copy data from https://www.dropbox.com/sh/jbw6iai2wez95fp/AABnIy7nUf1_IBbYuNNCuqGda?dl=0
+  into the `data/` directory.
+
 - Output arrays will be saved with pickle (in .pkl format) and stored in `output/`
 
 How to run:
