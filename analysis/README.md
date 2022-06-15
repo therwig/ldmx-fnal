@@ -57,6 +57,10 @@ import libDetDescr
 ```
 
 If this works, look at `get_hcalids.py` as an example to get the layer and strip numbering of an HcalHit.
+```
+cd ../../ldmx-fnal/analysis/
+ldmx python3 get_hcalids.py
+```
 
 ## Plotting
 
