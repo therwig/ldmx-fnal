@@ -14,7 +14,7 @@ Should be run in an environment (or jup notebook) with boost histogram and mplhe
 https://boost-histogram.readthedocs.io/en/latest/notebooks/aghast.html
 """
 
-# this example uses neutronguns.pkl as input file
+# this example uses ../output/example_2.pkl as input file
 
 parser = argparse.ArgumentParser(f'python3 {sys.argv[0]}')
 parser.add_argument('input_file')
@@ -25,10 +25,10 @@ input_file = arg.input_file
 
 # load each input pickle file
 with open(input_file,"rb") as pickle_file:
-    variables = pickle.load(pickle_file)
+    variables_by_filename = pickle.load(pickle_file)
 
 # print dictionary keys (for debugging)
-print(variables.keys())
+print(variables_by_filename.keys())
 
 # declare some axis that we are interested in plotting
 # a regular axis will have
@@ -51,15 +51,15 @@ hist_hcal_1 = hist.Hist(
 )
 
 # the histograms can be filled using the `variables array`
-for key,var_arrays in variables.items():
+for filename,var_arrays in variables_by_filename.items():
     # we can extract the gun Energy from the key
-    energy_str = key
+    energy_str = filename.split('_')[-2]
     print(energy_str)
     
     # to fill the hist_hcalsum histogram we need to fill each axis
     # the order in which we fill does not matter as long as we specify the axis name
     hist_hcal_1.fill(
-        hcalEnergy = variables["hcalrechit_energy"],
+        hcalEnergy = var_arrays["hcalrechit_energy"],
         gunEnergy = energy_str,
     )
 
@@ -87,25 +87,26 @@ hep.histplot(
     density=False, # whether to normalize the histogram to 1 or not
     label="0.10 GeV" # label of histogram
 )
+
 # set labels
 axs.set_ylabel("Rec Hits")
 axs.legend(title="Neutron Energy", fontsize=30)
 hep.cms.text(text="", loc=0, ax=axs,
              **{"exp": "LDMX", "exp_weight": "bold", "fontsize": 23, "italic": (True, True)})
 fig.tight_layout()
-fig.savefig("example_ngun_0.10.png")
+fig.savefig("plots/example_2_0.10.png")
 
 # we can also plot both of the files in the same histogram
 
 # we get the next histogram
-h2 = hist_hcal_1[{"gunEnergy":"0.30"}]
+h2 = hist_hcal_1[{"gunEnergy":"0.80"}]
 
 fig, axs = plt.subplots(1, 1, figsize=(8, 8))
 hep.histplot(h1,ax=axs,label="0.10 GeV")
-hep.histplot(h2,ax=axs,label="0.30 GeV")
+hep.histplot(h2,ax=axs,label="0.80 GeV")
 axs.set_ylabel("Rec Hits")
 axs.legend(title="Neutron Energy", fontsize=30)
 hep.cms.text(text="", loc=0, ax=axs,
              **{"exp": "LDMX", "exp_weight": "bold", "fontsize": 23, "italic": (True, True)})
 fig.tight_layout()
-fig.savefig("example_nguns.png")
+fig.savefig("plots/example_2_all.png")

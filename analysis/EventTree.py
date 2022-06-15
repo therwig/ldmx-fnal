@@ -47,7 +47,7 @@ class EventTree :
         self.__tree = self.__file.Get("LDMX_Events")
         self.__index = 0
 
-        print([b.GetName() for b in self.__tree.GetListOfBranches()])
+        # print([b.GetName() for b in self.__tree.GetListOfBranches()])
         self.__unclaimed_branches = [b.GetName() for b in self.__tree.GetListOfBranches()]
         self.__claimed_branches = { 'EventHeader' : 'EventHeader' }
 

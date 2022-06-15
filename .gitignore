@@ -1,4 +1,6 @@
+*.pkl
 *pyc
 *~
 *__pycache__
 *.root
+*.png

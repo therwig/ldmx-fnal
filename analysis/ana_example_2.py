@@ -16,8 +16,10 @@ arg = parser.parse_args()
 
 # EventTree is a class that reads out LDMX Events and loads the different collections
 # here, read all the input files into `trees`
-trees = [EventTree.EventTree(f) for f in arg.input_files]
-trees_by_filename = dict.fromkeys(arg.input_files, trees)
+print(arg.input_files)
+trees_by_filename = dict.fromkeys(arg.input_files)
+for filename in trees_by_filename.keys():
+    trees_by_filename[filename] = EventTree.EventTree(filename)
 
 # the convention to name arrays is the following: collection_variablename
 # for example:
@@ -41,9 +43,6 @@ for filename,tree in trees_by_filename.items():
     
     for ie, event in enumerate(tree):
 
-        # print list of branches
-        #print(filename,event)
-        
         # define the sumenergy for each event (start from 0)
         hcalsumenergy = 0
         # if needed, loop over one collection
