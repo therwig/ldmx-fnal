@@ -19,37 +19,37 @@ def main(arg):
         trees_by_filename[filename] = EventTree.EventTree(filename)
         
     var_names = [
-        "event_nhcalrechit", 
-        "event_nhcalrechit_1pe",
-        "event_nhcalrechit_5pe",
-        "event_hcalrechit_sumenergy",
-        "event_hcalrechit_maxenergy",
-        "event_hcalrechit_maxlayer",
-        "event_hcalrechit_maxlayer_nhits",
-        "event_hcalrechit_maxlayer_z",
-        "event_hcalrechit_maxpe",
-        "event_hcalrechit_maxpe_layer",
-        "event_hcalrechit_sumpe", 
-        "event_hcalrechit_isback", 
-        "event_hcalrechit_nuniquelayers",
-        "hcalrechit_uniquelayer", 
-        "hcalrechit_uniquelayer_nhits",
-        "hcalrechit_uniquelayer_nstrips",
-        "hcalrechit_uniquelayer_sumenergy",
+        "event_nhcalrechit",  # number of rechits
+        "event_nhcalrechit_1pe",  # number of rechits with 
+        "event_nhcalrechit_5pe",  # number of rechits with
+        "event_hcalrechit_sumenergy",  # summed energy of the event
+        "event_hcalrechit_maxenergy",  # max energy of the event
+        "event_hcalrechit_maxlayer",  # maximum layer reached in the event
+        "event_hcalrechit_maxlayer_nhits",  # maximum layer with number of hits
+        "event_hcalrechit_maxlayer_z",  # maximum layer reached in the z direction
+        "event_hcalrechit_maxpe",  # maximum potential energy 
+        "event_hcalrechit_maxpe_layer",  # layer where the maximum potential energy occured (?)
+        "event_hcalrechit_sumpe",  # sum of the potential energies of the event
+        "event_hcalrechit_isback", # determines if the hit occurs at the back of the Hcal
+        "event_hcalrechit_nuniquelayers",  # number of unique layers interacted with in the event
+        "hcalrechit_uniquelayer",  # unique layer of each hit
+        "hcalrechit_uniquelayer_nhits",  # number of hits in each unique hit
+        "hcalrechit_uniquelayer_nstrips",  # number of strips interacted with in each unique layer in each event
+        "hcalrechit_uniquelayer_sumenergy",  # summed energy in each unique layer for each event
         
-        "hcalrechit_x",
-        "hcalrechit_y",
-	"hcalrechit_z",
-        "hcalrechit_energy",
-        "hcalrechit_layer",
-        "hcalrechit_section",
-        "hcalrechit_strip",
-        "hcalrechit_pe", 
+        "hcalrechit_x",  # x position of each rechit
+        "hcalrechit_y",  # y position of each rechit
+	"hcalrechit_z",  # z position of each rechit
+        "hcalrechit_energy",  # energy of each rechit
+        "hcalrechit_layer",  # layer of each rechit
+        "hcalrechit_section",  # section of each rechit
+        "hcalrechit_strip",  # strip of each rechit
+        "hcalrechit_pe",  # 
         
-        "event_neutron_e",
-        "event_neutron_pz",
-        "event_neutron_kine",
-        "event_neutron_theta",
+        "event_neutron_e",  # energy of the neutron in each event
+        "event_neutron_pz",  # momentum of the neutron in the z direction of each event
+        "event_neutron_kine",  # neutron kinetic energy in each event
+        "event_neutron_theta",  # angle of the event
     ]
 
     variables_by_filename = {}
