@@ -62,6 +62,20 @@ cd ../../ldmx-fnal/analysis/
 ldmx python3 get_hcalids.py
 ```
 
+To use python bindings again:
+```
+source ldmx-sw/scripts/ldmx-env.sh
+ldmx use dev iss41-boost-python
+cd ldmx-fnal/analysis/
+ldmx python3
+import libDetDescr
+```
+
+## Neutrons
+```
+ldmx python3 neutrons.py data/ngun_870mm_0.05_gev.root data/ngun_870mm_0.10_gev.root data/ngun_870mm_0.20_gev.root data/ngun_870mm_0.30_gev.root data/ngun_870mm_0.40_gev.root data/ngun_870mm_0.50_gev.root data/ngun_870mm_0.60_gev.root data/ngun_870mm_0.70_gev.root data/ngun_870mm_0.80_gev.root data/ngun_870mm_1.00_gev.root --output neutrongun_0.1to1gev
+```
+
 ## Plotting
 
 In `plot/` you will find tools to plot the arrays saved in the pickle files.
@@ -83,3 +97,4 @@ python3 plot_example_1.py
 # second example from ../output/example_2.pkl
 python3 plot_example_2.py ../output/example_2.pkl 
 ```
+
