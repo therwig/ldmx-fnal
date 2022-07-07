@@ -36,7 +36,7 @@ def main(arg):
         "hcalrechit_uniquelayer_nhits",  # number of hits in each unique hit
         "hcalrechit_uniquelayer_nstrips",  # number of strips interacted with in each unique layer in each event
         "hcalrechit_uniquelayer_sumenergy",  # summed energy in each unique layer for each event
-        
+
         "hcalrechit_x",  # x position of each rechit
         "hcalrechit_y",  # y position of each rechit
 	"hcalrechit_z",  # z position of each rechit
@@ -50,6 +50,8 @@ def main(arg):
         "event_neutron_pz",  # momentum of the neutron in the z direction of each event
         "event_neutron_kine",  # neutron kinetic energy in each event
         "event_neutron_theta",  # angle of the event
+
+        "event_hcalrechit_minPEover1_zval",  # z value of the lowest-PE recHit with over 1 PE of reco energy
     ]
 
     variables_by_filename = {}
@@ -106,7 +108,16 @@ def main(arg):
             if nhits > 0:
                 variables["event_nhcalrechit_1pe"].append((hits["pe"]>1).sum())
                 variables["event_nhcalrechit_5pe"].append((hits["pe"]>5).sum())
-                
+
+                if (hits["pe"]>1).sum() > 0:
+                    pes = hits["pe"]
+                    highPE_indices = np.where(pes>1)
+                    minPE_Val = np.min(pes[highPE_indices])
+                    minPE_Index = np.argmin(pes[highPE_indices])
+                    minPE_Z = hits["zpos"][minPE_Index]
+                    print(pes, highPE_indices, pes[highPE_indices], minPE_Val, minPE_Index, minPE_Z)
+                    variables["event_hcalrechit_minPEover1_zval"].append(minPE_Z)
+                    
                 variables["event_hcalrechit_sumenergy"].append(np.sum(hits["energy"]))
                 variables["event_hcalrechit_maxenergy"].append(np.max(hits["energy"]))
             
