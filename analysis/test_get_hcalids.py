@@ -18,7 +18,8 @@ for ie,event in enumerate(tree):
         hit_id = hit.getID()
         hit_hcalid = DD.HcalID(hit_id)
         raw_id = hit_hcalid.raw()
-        section = hit_hcalid.section() 
+        section = hit_hcalid.section()
         layer = hit_hcalid.layer()
+        print(layer)
         strip = hit_hcalid.strip()
 

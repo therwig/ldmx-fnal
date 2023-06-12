@@ -61,7 +61,8 @@ def main(arg):
             variables[key] = []
             
         for ie,event in enumerate(tree):
-
+            # if ie!=42: continue  # uncomment these lines to analyze clusters for just one event
+            # if ie>42: break  # you can change the number in between runs to look at a differnet event
             if arg.max_events!=-1 and ie>=arg.max_events: continue
             
             # Hcal RecHits
